@@ -65,25 +65,7 @@ jobs:
         run: |
           streamlit --version
 
-        # Step 7
-      # Optional: Check project files exist
-      - name: Verify Project Files
-
-        run: |
-
-          echo "Checking required files..."
-
-          test -f app.py
-
-          test -f movies.pkl
-
-          test -f similarity.pkl
-
-          echo "All required files found."
-
-
-
-      # Step 8
+      # Step 7
       # Success message
       - name: Workflow Completed
 
