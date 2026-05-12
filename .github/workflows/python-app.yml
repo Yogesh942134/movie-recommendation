@@ -1,0 +1,91 @@
+# workflow name
+name: Streamlit CI Workflow
+
+# when should run 
+on:
+  push: 
+    branches: 
+      - main
+
+  #also run when pull request
+  pull_request:
+    branches:
+      - main
+
+# jobs
+jobs:
+
+  # job name
+  build-and-test:
+
+    # os used by github
+    runs-on: ubuntu-latest
+
+    #steps
+    steps:
+    # step 1 - Download repository code into virtual machine
+      - name: Checkout Repository
+      
+        uses: actions/checkout@v4
+
+     # Step 2
+      # Install Python in virtual machine
+      - name: Setup Python
+
+        uses: actions/setup-python@v5
+
+        with:
+          python-version: "3.11"
+
+      # Step 3
+      # Upgrade pip package manager
+      - name: Upgrade pip
+
+        run: |
+          python -m pip install --upgrade pip
+
+     # Step 4
+      # Install project dependencies
+      - name: Install Dependencies
+
+        run: |
+          pip install -r requirements.txt
+
+        # Step 5
+      # Check Python syntax errors
+      - name: Python Syntax Check
+
+        run: |
+          python -m py_compile app.py
+
+      # Step 6
+      # Verify Streamlit installation
+      - name: Check Streamlit
+
+        run: |
+          streamlit --version
+
+        # Step 7
+      # Optional: Check project files exist
+      - name: Verify Project Files
+
+        run: |
+
+          echo "Checking required files..."
+
+          test -f app.py
+
+          test -f movies.pkl
+
+          test -f similarity.pkl
+
+          echo "All required files found."
+
+
+
+      # Step 8
+      # Success message
+      - name: Workflow Completed
+
+        run: |
+          echo "GitHub Actions workflow completed successfully!"
