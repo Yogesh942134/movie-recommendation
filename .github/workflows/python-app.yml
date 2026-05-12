@@ -65,7 +65,7 @@ jobs:
         run: |
           streamlit --version
 
-      # Step 7
+      # step 7
       # Success message
       - name: Workflow Completed
 
