@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import requests
+from helper import r_similarity,m_similarity
 
 
 # title
@@ -9,8 +10,6 @@ st.title("Movie Recommendation System")
 # load movies
 movies = pickle.load(open('movies.pkl', 'rb'))
 
-#load similarity vector
-similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 # reusable session
 session = requests.Session()
@@ -36,10 +35,11 @@ def fetch_poster(movie_id):
         # fallback image instead of crashing
         return "https://via.placeholder.com/500x750?text=Connection+Error"
 
-# recommend
+# recommend v.1 (update for dynamic calculation of similarity in v.2)
 def recommend(movie):
     index = int(movies[movies['title'] == movie].index[0])
-    distances = similarity[index]
+    similarity = r_similarity(index)
+    distances = similarity[0]
     movies_list = list(sorted(enumerate(distances), key=lambda x: x[1], reverse=True))[1:6]
 
     movie_recommendations = []
@@ -52,15 +52,36 @@ def recommend(movie):
 
     return movie_recommendations , poster_url
 
+# recommend multiple v.2
+def recommend_multple(selected_movies):
+    similarities = m_similarity(selected_movies)
+    movie_indices = similarities.argsort()[::-1][:20]
+
+    recommendations = []
+    poster_url = []
+    for index in movie_indices:
+        title = movies.iloc[index]['title']
+
+        # remove already selected movies
+        if title not in selected_movies:
+            movie_id = movies.iloc[index]['movie_id']
+
+            poster_url.append(fetch_poster(movie_id))
+            recommendations.append(title)
+
+        if len(recommendations) == 5:
+            break
+    return recommendations, poster_url
+
 # movies list
 total_movies = movies['title'].values.tolist()
 
 # movies select box
-movie  = st.selectbox("Select Movie", total_movies)
+movie  = st.multiselect("Select Movies you like : ", total_movies)
 
 # button
 if st.button("recommend"):
-    names,posters = recommend(movie)
+    names,posters = recommend_multple(movie)
 
     # show movie and poster
     col1, col2, col3, col4, col5 = st.columns(5)

@@ -1,18 +1,22 @@
 ## Movie Recommendation System
 
-A content-based Movie Recommendation System built using **Python**, **Machine Learning**, and **Streamlit**.
+A content-based Movie Recommendation System built using Python, Machine Learning, and Streamlit.
 
-The application recommends similar movies based on user selection and fetches movie posters dynamically using the TMDB API.
+The application recommends similar movies using vectorization and cosine similarity. It also supports multiple movie preference input to generate more personalized recommendations. Movie posters and metadata are fetched dynamically using the TMDB API.
 
-### Link : https://movie-recommendation-2511.streamlit.app/
+### Live Demo
+https://movie-recommendation-2511.streamlit.app/
+
 
 ## Features
 
-- Movie recommendation based on similarity
-- Content-based filtering
+- Content-based movie recommendation system
+- Cosine similarity based recommendation engine
+- Multiple movie preference recommendation
+- Dynamic similarity computation
 - Interactive Streamlit UI
 - TMDB API integration
-- Dynamic movie posters
+- Dynamic movie posters and movie details
 - Error handling for unavailable posters/API failures
 
 
@@ -31,12 +35,20 @@ The application recommends similar movies based on user selection and fetches mo
 ```bash
 movie-recommendation-system/
 │
+├── .github/
+├── .streamlit/
+│   └── secrets.toml
+│
+├── data/
+│
 ├── app.py
+├── helper.py
 ├── movies.pkl
-├── similarity.pkl
+├── vectors.pkl
+├── preprocessing.ipynb
 ├── requirements.txt
 ├── .gitignore
-│
-└── .streamlit/
-    └── secrets.toml
+├── .gitattributes
+└── README.md
+
 ```
