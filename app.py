@@ -76,7 +76,7 @@ def recommend_multple(selected_movies):
 # movies list
 total_movies = movies['title'].values.tolist()
 
-# movies select box
+# movies multi select box
 movie  = st.multiselect("Select Movies you like : ", total_movies)
 
 # button

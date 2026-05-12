@@ -11,7 +11,7 @@ def r_similarity(index):
     similarity = cosine_similarity([movie_vector],vectors)
     return similarity
 
-# for multiple movies
+# for multiple movies similarity
 def m_similarity(selected_movies):
     movies_vectors = []
     for movie in selected_movies:
@@ -20,5 +20,4 @@ def m_similarity(selected_movies):
 
     user_vector = np.mean(movies_vectors, axis=0)
     similarities = cosine_similarity([user_vector],vectors)[0]
-
     return similarities

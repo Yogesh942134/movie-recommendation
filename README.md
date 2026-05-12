@@ -25,6 +25,7 @@ https://movie-recommendation-2511.streamlit.app/
 - Python
 - Pandas
 - NumPy
+- Pandas
 - Scikit-learn
 - Streamlit
 - TMDB API
