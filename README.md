@@ -1,12 +1,12 @@
-# Movie Recommendation System
+## Movie Recommendation System
 
 A content-based Movie Recommendation System built using **Python**, **Machine Learning**, and **Streamlit**.
 
 The application recommends similar movies based on user selection and fetches movie posters dynamically using the TMDB API.
 
-# Link : 
+## Link : https://movie-recommendation-2511.streamlit.app/
 
-# Features
+## Features
 
 - Movie recommendation based on similarity
 - Content-based filtering
@@ -16,7 +16,7 @@ The application recommends similar movies based on user selection and fetches mo
 - Error handling for unavailable posters/API failures
 
 
-# Tech Stack
+## Tech Stack
 
 - Python
 - Pandas
@@ -26,7 +26,7 @@ The application recommends similar movies based on user selection and fetches mo
 - TMDB API
 
 
-# Project Structure
+## Project Structure
 
 ```bash
 movie-recommendation-system/
