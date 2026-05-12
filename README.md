@@ -4,7 +4,7 @@ A content-based Movie Recommendation System built using **Python**, **Machine Le
 
 The application recommends similar movies based on user selection and fetches movie posters dynamically using the TMDB API.
 
----
+# Link : 
 
 # Features
 
@@ -15,7 +15,6 @@ The application recommends similar movies based on user selection and fetches mo
 - Dynamic movie posters
 - Error handling for unavailable posters/API failures
 
----
 
 # Tech Stack
 
@@ -26,7 +25,6 @@ The application recommends similar movies based on user selection and fetches mo
 - Streamlit
 - TMDB API
 
----
 
 # Project Structure
 
