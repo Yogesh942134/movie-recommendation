@@ -81,7 +81,7 @@ st.write("Select up to 5 movies : ")
 col1, col2 = st.columns([6,2])
 # movies multi select box
 with col1:
-    movie = st.multiselect("",total_movies, label_visibility="collapsed")
+    movie = st.multiselect("Select up to 5 movies : ",total_movies, label_visibility="collapsed",max_selections=5)
 
 with col2:
     recommend_btn = st.button("Recommend",use_container_width=True)
