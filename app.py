@@ -77,7 +77,7 @@ def recommend_multple(selected_movies):
 total_movies = movies['title'].values.tolist()
 
 
-st.write("Select Movies you like : ")
+st.write("Select up to 5 movies : ")
 col1, col2 = st.columns([6,2])
 # movies multi select box
 with col1:
@@ -88,29 +88,34 @@ with col2:
 
 # button
 if recommend_btn:
-    names,posters = recommend_multple(movie)
+    if len(movie) == 0:
+        st.warning("Please select at least one movie")
+    elif len(movie) > 5:
+        st.warning("You can select at most 5 movies")
+    else:
+        names, posters = recommend_multple(movie)
 
-    st.write("Recommended Movies : ")
-    # show movie and poster
-    col1, col2, col3, col4, col5 = st.columns(5)
+        st.write("Recommended Movies : ")
+        # show movie and poster
+        col1, col2, col3, col4, col5 = st.columns(5)
 
-    with col1:
-        st.text(names[0])
-        st.image(posters[0])
+        with col1:
+            st.text(names[0])
+            st.image(posters[0])
 
-    with col2:
-        st.text(names[1])
-        st.image(posters[1])
+        with col2:
+            st.text(names[1])
+            st.image(posters[1])
 
-    with col3:
-        st.text(names[2])
-        st.image(posters[2])
+        with col3:
+            st.text(names[2])
+            st.image(posters[2])
 
-    with col4:
-        st.text(names[3])
-        st.image(posters[3])
+        with col4:
+            st.text(names[3])
+            st.image(posters[3])
 
-    with col5:
-        st.text(names[4])
-        st.image(posters[4])
+        with col5:
+            st.text(names[4])
+            st.image(posters[4])
 
