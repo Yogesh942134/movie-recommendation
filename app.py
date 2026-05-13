@@ -76,13 +76,21 @@ def recommend_multple(selected_movies):
 # movies list
 total_movies = movies['title'].values.tolist()
 
+
+st.write("Select Movies you like : ")
+col1, col2 = st.columns([6,2])
 # movies multi select box
-movie  = st.multiselect("Select Movies you like : ", total_movies)
+with col1:
+    movie = st.multiselect("",total_movies, label_visibility="collapsed")
+
+with col2:
+    recommend_btn = st.button("Recommend",use_container_width=True)
 
 # button
-if st.button("recommend"):
+if recommend_btn:
     names,posters = recommend_multple(movie)
 
+    st.write("Recommended Movies : ")
     # show movie and poster
     col1, col2, col3, col4, col5 = st.columns(5)
 
